@@ -8,6 +8,10 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from "./login/login.component";
+import { CheckoutComponent } from "./checkout/checkout.component";
+import { canActivateChild } from "./auth.guard";
+
+
 
 
 const routes: Routes = [
@@ -18,9 +22,10 @@ const routes: Routes = [
   {path: 'Contact', component: ContactComponent},
   {path: 'Courses', component: CoursesComponent}, 
   // {path: 'Courses/Course/:id', component: CourseDetailComponent},
-  {path: 'Courses', children: [
+  {path: 'Courses', canActivateChild: [canActivateChild],  children: [
     {path: 'Course/:id', component: CourseDetailComponent},
-    {path: 'Popular', component: PopularComponent}
+    {path: 'Popular', component: PopularComponent},
+    {path: 'Checkout', component: CheckoutComponent}
   ]},
   {path: 'Login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
