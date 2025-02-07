@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { canActivateChild } from "./auth.guard";
+import { AuthGuardService } from "./Services/authguard.service";
 
 
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'Home', pathMatch: 'full'},
   {path: 'Home', component: HomeComponent},
   {path: 'About', component: AboutComponent},
-  {path: 'Contact', component: ContactComponent},
+  {path: 'Contact', component: ContactComponent, canDeactivate: [(comp: ContactComponent) => {return comp.canExit()}]},
   {path: 'Courses', component: CoursesComponent}, 
   // {path: 'Courses/Course/:id', component: CourseDetailComponent},
   {path: 'Courses', canActivateChild: [canActivateChild],  children: [

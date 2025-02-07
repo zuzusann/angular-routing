@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RoutingModule } from './routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -46,7 +47,8 @@ import { RoutingModule } from './routing.module';
   ],
   imports: [
     BrowserModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
   providers: [ServicesService, CourseService],
   bootstrap: [AppComponent]
