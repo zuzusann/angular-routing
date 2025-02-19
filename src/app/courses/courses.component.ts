@@ -9,36 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit{
-  coursesService = inject(CourseService);
-  AllCourses: Course[];
-  searchString: string;
+  
+  constructor(private courseService: CourseService, private route: ActivatedRoute){}
 
-  activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  courses = [];
 
   ngOnInit(): void {
-      // this.searchString =  this.activeRoute.snapshot.queryParams['search'];
-      // this.searchString = this.activeRoute.snapshot.queryParamMap.get('search');
-     
-      // this.activeRoute.queryParams.subscribe((data) => {
-      //   this.searchString = data['search'];
-      // })
-
-      this.activeRoute.queryParamMap.subscribe((data) => {
-        this.searchString = data.get('search');
-
-        if(this.searchString === undefined || this.searchString === '' || this.searchString === null){
-          // this.coursesService.getAllcourses().subscribe((data: Course[]) => {
-          //   this.AllCourses = data;
-          // })
-
-          this.AllCourses =  this.activeRoute.snapshot.data['courses'];
-        }else{
-          this.AllCourses = this.coursesService.courses
-            .filter(x => x.title.toLowerCase()
-          .includes(this.searchString.toLowerCase()));
-        }
-      })
-      
+      this.courses = this.route.snapshot.data['courses'];
   }
 
   

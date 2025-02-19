@@ -21,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RoutingModule } from './routing.module';
 import { FormsModule } from '@angular/forms';
+import { CourseResolveService } from './course.resolve.service';
 
 
 
@@ -50,7 +51,7 @@ import { FormsModule } from '@angular/forms';
     RoutingModule,
     FormsModule
   ],
-  providers: [ServicesService, CourseService],
+  providers: [ServicesService, CourseService, CourseResolveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

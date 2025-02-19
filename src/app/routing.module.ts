@@ -11,6 +11,7 @@ import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { canActivateChild, resolve } from "./auth.guard";
 import { AuthGuardService } from "./Services/authguard.service";
+import { CourseResolveService } from "./course.resolve.service";
 
 
 
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'Home', component: HomeComponent},
   {path: 'About', component: AboutComponent},
   {path: 'Contact', component: ContactComponent, canDeactivate: [(comp: ContactComponent) => {return comp.canExit()}]},
-  {path: 'Courses', component: CoursesComponent, resolve: {courses: resolve}}, 
+  {path: 'Courses', component: CoursesComponent, resolve: {courses: CourseResolveService}}, 
   // {path: 'Courses/Course/:id', component: CourseDetailComponent},
   {path: 'Courses', canActivateChild: [canActivateChild],  children: [
     {path: 'Course/:id', component: CourseDetailComponent},
